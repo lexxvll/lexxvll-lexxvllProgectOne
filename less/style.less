@@ -1,0 +1,495 @@
+/* Fonts settings */
+.reg() {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.z() {
+    font-family: 'Z003', sans-serif;
+}
+
+.pat() {
+    font-family: 'Pattaya', sans-serif;
+}
+
+/* Color */
+@body-bg: #fef0ef;
+@text: #ff417f;
+@bg-cont: #ffdbdb;
+@txt-footer: #f11716;
+@photo-mstr-bg: rgba(255, 65, 128, 0.6);
+
+/* Кнопка */
+.button {
+    display: inline-block;
+    padding: 1.6rem 5rem;
+    .reg();
+    font-weight: 900;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-transform: uppercase;
+    background-color: @text;
+    color: @bg-cont;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    transition: all 0.2s;
+    margin: 0 auto;
+    cursor: pointer;
+
+    &:hover {
+        background-color: @bg-cont;
+        color: @text;
+        border: 2px solid @text;
+        border-radius: 0.5rem
+    }
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    .reg();
+    color: @text;
+    background-color: @body-bg;
+}
+
+iframe {
+    width: 100%;
+    height: 18rem;
+    border: 0;
+}
+
+button,
+input,
+textarea,
+a {
+    &:focus {
+        outline: none;
+    }
+}
+
+section {
+    padding: 10rem 0;    
+}
+
+.section-header {
+    margin-bottom: 10rem;
+    &-title {
+        .reg();
+        font-size: 4rem;
+        text-align: center;
+        color: @text;
+    }    
+}
+
+.container {
+    padding: 0;
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* Шапка сайта */
+.header {        
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;                        
+    height: 8rem;
+    background: rgba(255, 219, 249, 0);
+
+    &.fixed {            
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transform: translate3d(0, 0, 0);
+        background-color: @bg-cont;
+    }    
+
+
+    &-logo {
+        padding-top: 1.5rem;
+        img {
+        width: 5rem; 
+        }            
+    }
+
+    &-nav { 
+        padding-top: 1.1rem;           
+        text-align: right;
+        height: 8rem;
+
+        .nav {
+            display: inline-block;
+            height: 8rem;
+        }
+
+        a {
+            display: inline-block;
+            .reg();
+            font-size: 2.2rem;
+            color: @text;
+            text-decoration: none;
+            line-height: 2;
+            &:hover {
+                color: lighten(@text, 10%); 
+                transition: all 0.2s;               
+            } 
+            
+            &::after {                
+                display: block; /*превращаем его в блочный элемент*/
+                content: ""; /*контента в данном блоке не будет поэтому в кавычках ничего не ставим*/
+                height: 3px; /*задаём высоту линии*/
+                width: 0%; /*задаём начальную ширину элемента (линии)*/
+                background-color: lighten(@text, 20%); /*цвет фона элемента*/
+                transition: width 0.2s ease-in-out; /*данное свойство отвечает за плавное изменение ширины. Здесь можно задать время анимации в секундах (в данном случае задано 0.4 секунды)*/                    
+            }
+            
+            &:hover:after,
+            &:focus:after {
+                width: 100%;
+            }
+            
+        }
+    }
+}        
+
+.nav-link:focus {        
+    color: lighten(@text, 10%);       
+}
+
+/* Главная секция сайта */
+.main {
+    height: 100vh;
+    background: url(../img/main/main-bg.webp) center no-repeat;
+    background-size: cover;    
+
+    &-content {
+        padding-top: 15rem;
+        text-align: center;
+
+        &-logo {            
+            margin: 0 auto;
+            img {
+                width: 100%;
+                margin-bottom: 10rem;
+                object-fit: contain;
+            }            
+        }
+
+        &-title {
+            .z();
+            font-size: 5rem;
+            color: @text;
+            margin-bottom: 2rem;
+        }        
+    }
+}
+
+/* Услуги */
+.services {
+    &-content {
+        background-color: @bg-cont;
+        &-item{
+            display: block;
+            text-align: right;
+            
+            &-1 {
+                background: url(../img/services/frame-left.svg) top left no-repeat;
+                background-size: 20%;     
+            }
+            &-2 {
+                text-align: left;
+                background: url(../img/services/frame-center.svg) right no-repeat;
+                background-size: contain;
+            }
+            &-3 {
+                background: url(../img/services/frame-right.svg) bottom left no-repeat;
+                background-size: 20%; 
+            }
+            &-txt {
+                display: inline-block;
+                width: 49%;
+                height: 100%;
+                text-align: center;
+                vertical-align: middle;
+                p {
+                    .reg();
+                    font-size: 2rem;
+                    line-height: 3;
+                }
+            }   
+            img {                
+                display: inline-block;
+                vertical-align: middle;
+            }        
+        }
+    }
+}
+
+/* Портфолио */
+.portfolio {
+    display: flex; 
+    &-item {
+        width: 25%;
+        &-img {
+            position: relative;
+            background-color: @text;
+            img {
+                width: 100%;
+            }
+            &:hover {
+                cursor: pointer;
+                img {
+                    opacity: 0.7;
+                }
+                .portfolio-btn {
+                    display: block;
+                }
+            }
+        }        
+    }
+    &-btn {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 100;
+        transform: translate3d(-50%, -50%, 0);
+
+    }   
+}
+
+/* Мастера */
+.masters {
+    &-item {
+        padding: 0 1rem;
+        text-align: center;
+        
+        &-inner {
+            position: relative;
+            width: 100%;
+            display: inline-block;
+            background-color: @photo-mstr-bg;
+            margin-bottom: 3rem;
+
+            &-photo {                
+                background-color: @text;
+                img {
+                    width: 100%;
+                }  
+                             
+            }
+            &-phone {
+                display: none;
+                position: absolute;
+                bottom: 1rem;
+                right: 1rem;
+                z-index: 100;                              
+                img {
+                    width: 5rem;
+                    margin-left: 1.5rem;
+                }
+
+                a {
+                    &:hover {
+                        opacity: 0.6;
+                    }
+                }
+            }
+        }
+        &:hover {
+            cursor: pointer;
+            .masters-item-inner-photo { 
+                display: block;               
+                transform: translate3d(-1rem, -1rem, 0);
+                transition: all 0.3s; 
+                img {
+                    opacity: 0.9;
+                }                      
+            }
+
+            .masters-item-inner-phone {
+                display: block;               
+                transition: all 0.3s;
+                img {
+                    transform: translate3d(-1rem, -1rem, 0);
+                }
+            }
+            
+
+            h3, p {
+                color: lighten(@text, 10%); 
+            }
+        }
+        &-name {
+            .z();
+            font-size: 3.5rem;
+        }
+        &-specialization {
+            .reg();
+            font-size: 1.8rem;
+        }
+    }
+    a {
+        color: @text;
+        text-decoration: none;
+    }
+}
+
+
+/* Контакты */
+.contacts {
+    padding-top: 0;
+
+    &-content {
+        &-map {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    &-header {
+        margin-bottom: 3.5rem;        
+    }
+    &-title {
+        font-size: 3rem;
+    }
+
+    &-links {
+        text-align: center;
+        p {
+            font-size: 2rem; 
+        }
+        a {
+            display: block;
+            color: @text;
+            text-decoration: none;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+
+            img {
+                height: 2.2rem;
+                margin-right: 2rem;
+            }
+
+            &:hover {
+                color: lighten(@text, 10%);
+            }               
+        }        
+    }
+}
+
+/* Подвал сайта*/
+.footer {  
+    min-height: 8rem;
+    color: @txt-footer;
+    background: @bg-cont;
+    .reg();
+    font-size: 1.4rem;
+    text-align: center;
+    &-content {
+      padding-top: 2.5rem;    
+      margin: auto;
+      &-item {
+        display: inline-block;
+        width: 49%;
+        vertical-align: middle;
+        &-copyright {
+          font-size: 2rem;
+          text-align: left;
+          span {
+            .pat();
+            color: @text;
+          }
+        }       
+        &-by {
+          font-size: 1.8rem;
+          text-align: right;
+          strong {
+            .pat();
+            font-size: 2rem;
+            color: @text;
+          }
+        }          
+      }     
+    } 
+    &-link {
+      text-align: left;
+      a {
+        color: @text;
+        text-decoration: none;
+        &:hover {
+            color: lighten(@text, 10%);
+        }
+      }
+      
+    }    
+}
+
+/* Всплывающие окна */
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  
+    &-content {
+      min-width: 28rem;
+      position: fixed;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: #fff;
+      padding: 4rem 5rem;
+      p {
+        .reg();
+        font-size: 1.8rem;
+      }
+    }
+  
+    &-close {
+      padding: 0;
+      position: absolute;
+      top: -2rem;
+      right: -3rem;
+      width: 2rem;
+      text-align: center;
+      border: none;
+      .reg();
+      font-weight: bold;
+      font-size: 4rem;
+      color: @bg-cont;
+      background-color: transparent;
+    }
+  
+    &-header {
+      .z();
+      font-size: 3.5rem;
+    }
+}
+
+/* Адаптивность */
+
+@media(max-width: 576px) {
+    .services {
+        &-content {          
+            &-item{                
+                img {                
+                    width: 100%;
+                }        
+            }
+        }
+    }
+    
+}
